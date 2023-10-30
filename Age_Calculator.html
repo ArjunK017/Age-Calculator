@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Age Calculator</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" type="png" href="icon.png">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="smoke.css">
+    <link rel="stylesheet" href="calculate.css">
+</head>
+
+<body>
+    <section>
+        <h1>
+            <span>A</span>
+            <span>G</span>
+            <span>E</span>
+            <span></span>
+            <span>C</span>
+            <span>A</span>
+            <span>L</span>
+            <span>C</span>
+            <span>U</span>
+            <span>L</span>
+            <span>A</span>
+            <span>T</span>
+            <span>O</span>
+            <span>R</span>
+        </h1>
+    </section>
+    <canvas></canvas>
+
+    <div class="container">
+        <form>
+            <label for="dob">Date of Birth:</label><br>
+            <input type="date" id="dob"><br>
+
+            <!-- Add the .voltage-button div with button, svg, and dots -->
+            <div class="voltage-button">
+                <button class="button" onclick="calculateAge(event)">Calculate</button>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 234.6 61.3" preserveAspectRatio="none" xml:space="preserve">
+                    <filter id="glow">
+                        <feGaussianBlur class="blur" result="coloredBlur" stdDeviation="2"></feGaussianBlur>
+                        <feTurbulence type="fractalNoise" baseFrequency="0.075" numOctaves="0.3" result="turbulence"></feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="30" xChannelSelector="R" yChannelSelector="G" result="displace"></feDisplacementMap>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"></feMergeNode>
+                          <feMergeNode in="coloredBlur"></feMergeNode>
+                          <feMergeNode in="coloredBlur"></feMergeNode>
+                          <feMergeNode in="displace"></feMergeNode>
+                          <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                      </filter>
+                      <path class="voltage line-1" d="m216.3 51.2c-3.7 0-3.7-1.1-7.3-1.1-3.7 0-3.7 6.8-7.3 6.8-3.7 0-3.7-4.6-7.3-4.6-3.7 0-3.7 3.6-7.3 3.6-3.7 0-3.7-0.9-7.3-0.9-3.7 0-3.7-2.7-7.3-2.7-3.7 0-3.7 7.8-7.3 7.8-3.7 0-3.7-4.9-7.3-4.9-3.7 0-3.7-7.8-7.3-7.8-3.7
+        0-3.7-1.1-7.3-1.1-3.7 0-3.7 3.1-7.3 3.1-3.7 0-3.7 10.9-7.3 10.9-3.7 0-3.7-12.5-7.3-12.5-3.7 0-3.7 4.6-7.3 4.6-3.7 0-3.7 4.5-7.3 4.5-3.7 0-3.7 3.6-7.3 3.6-3.7 0-3.7-10-7.3-10-3.7 0-3.7-0.4-7.3-0.4-3.7 0-3.7 2.3-7.3 2.3-3.7 0-3.7 7.1-7.3 7.1-3.7 0-3.7-11.2-7.3-11.2-3.7
+        0-3.7 3.5-7.3 3.5-3.7 0-3.7 3.6-7.3 3.6-3.7 0-3.7-2.9-7.3-2.9-3.7 0-3.7 8.4-7.3 8.4-3.7 0-3.7-14.6-7.3-14.6-3.7 0-3.7 5.8-7.3 5.8-2.2 0-3.8-0.4-5.5-1.5-1.8-1.1-1.8-2.9-2.9-4.8-1-1.8 1.9-2.7 1.9-4.8 0-3.4-2.1-3.4-2.1-6.8s-9.9-3.4-9.9-6.8 8-3.4 8-6.8c0-2.2
+        2.1-2.4 3.1-4.2 1.1-1.8 0.2-3.9 2-5 1.8-1 3.1-7.9 5.3-7.9 3.7 0 3.7 0.9 7.3 0.9 3.7 0 3.7 6.7 7.3 6.7 3.7 0 3.7-1.8 7.3-1.8 3.7 0 3.7-0.6 7.3-0.6 3.7 0 3.7-7.8 7.3-7.8h7.3c3.7 0 3.7 4.7 7.3 4.7 3.7 0 3.7-1.1 7.3-1.1 3.7 0 3.7 11.6 7.3 11.6 3.7 0 3.7-2.6
+        7.3-2.6 3.7 0 3.7-12.9 7.3-12.9 3.7 0 3.7 10.9 7.3 10.9 3.7 0 3.7 1.3 7.3 1.3 3.7 0 3.7-8.7 7.3-8.7 3.7 0 3.7 11.5 7.3 11.5 3.7 0 3.7-1.4 7.3-1.4 3.7 0 3.7-2.6 7.3-2.6 3.7 0 3.7-5.8 7.3-5.8 3.7 0 3.7-1.3 7.3-1.3 3.7 0 3.7 6.6 7.3 6.6s3.7-9.3 7.3-9.3c3.7
+        0 3.7 0.2 7.3 0.2 3.7 0 3.7 8.5 7.3 8.5 3.7 0 3.7 0.2 7.3 0.2 3.7 0 3.7-1.5 7.3-1.5 3.7 0 3.7 1.6 7.3 1.6s3.7-5.1 7.3-5.1c2.2 0 0.6 9.6 2.4 10.7s4.1-2 5.1-0.1c1 1.8 10.3 2.2 10.3 4.3 0 3.4-10.7 3.4-10.7 6.8s1.2 3.4 1.2 6.8 1.9 3.4 1.9 6.8c0 2.2 7.2
+        7.7 6.2 9.5-1.1 1.8-12.3-6.5-14.1-5.5-1.7 0.9-0.1 6.2-2.2 6.2z" fill="transparent" stroke="#fff"></path>
+                      <path class="voltage line-2" d="m216.3 52.1c-3 0-3-0.5-6-0.5s-3 3-6 3-3-2-6-2-3 1.6-6 1.6-3-0.4-6-0.4-3-1.2-6-1.2-3 3.4-6 3.4-3-2.2-6-2.2-3-3.4-6-3.4-3-0.5-6-0.5-3 1.4-6 1.4-3 4.8-6 4.8-3-5.5-6-5.5-3 2-6 2-3 2-6 2-3 1.6-6 1.6-3-4.4-6-4.4-3-0.2-6-0.2-3
+        1-6 1-3 3.1-6 3.1-3-4.9-6-4.9-3 1.5-6 1.5-3 1.6-6 1.6-3-1.3-6-1.3-3 3.7-6 3.7-3-6.4-6-6.4-3 2.5-6 2.5h-6c-3 0-3-0.6-6-0.6s-3-1.4-6-1.4-3 0.9-6 0.9-3 4.3-6 4.3-3-3.5-6-3.5c-2.2 0-3.4-1.3-5.2-2.3-1.8-1.1-3.6-1.5-4.6-3.3s-4.4-3.5-4.4-5.7c0-3.4 0.4-3.4
+        0.4-6.8s2.9-3.4 2.9-6.8-0.8-3.4-0.8-6.8c0-2.2 0.3-4.2 1.3-5.9 1.1-1.8 0.8-6.2 2.6-7.3 1.8-1 5.5-2 7.7-2 3 0 3 2 6 2s3-0.5 6-0.5 3 5.1 6 5.1 3-1.1 6-1.1 3-5.6 6-5.6 3 4.8 6 4.8 3 0.6 6 0.6 3-3.8 6-3.8 3 5.1 6 5.1 3-0.6 6-0.6 3-1.2 6-1.2 3-2.6 6-2.6
+        3-0.6 6-0.6 3 2.9 6 2.9 3-4.1 6-4.1 3 0.1 6 0.1 3 3.7 6 3.7 3 0.1 6 0.1 3-0.6 6-0.6 3 0.7 6 0.7 3-2.2 6-2.2 3 4.4 6 4.4 3-1.7 6-1.7 3-4 6-4 3 4.7 6 4.7 3-0.5 6-0.5 3-0.8 6-0.8 3-3.8 6-3.8 3 6.3 6 6.3 3-4.8 6-4.8 3 1.9 6 1.9 3-1.9 6-1.9 3 1.3 6 1.3c2.2
+        0 5-0.5 6.7 0.5 1.8 1.1 2.4 4 3.5 5.8 1 1.8 0.3 3.7 0.3 5.9 0 3.4 3.4 3.4 3.4 6.8s-3.3 3.4-3.3 6.8 4 3.4 4 6.8c0 2.2-6 2.7-7 4.4-1.1 1.8 1.1 6.7-0.7 7.7-1.6 0.8-4.7-1.1-6.8-1.1z" fill="transparent" stroke="#fff"></path>
+                </svg>
+                <div class="dots">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="dot dot-3"></div>
+                    <div class="dot dot-4"></div>
+                    <div class="dot dot-5"></div>
+                </div>
+            </div>
+
+            <div class="age-result">
+                <p id="result"></p>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        const MAX = 50;
+
+        var canvas, ctx;
+        var count = 0;
+        var points = [];
+
+        window.onload = function() {
+            canvas = document.getElementsByTagName("canvas")[0];
+            ctx = canvas.getContext("2d");
+            canvas.width = canvas.height = 400;
+            ctx.fillRect(0, 0, 400, 400);
+
+            var r = 0;
+            for (var a = 0; a < MAX; a++) {
+                points.push([Math.cos(r), Math.sin(r), 0]);
+                r += (Math.PI * 2) / MAX;
+            }
+
+            for (var a = 0; a < MAX; a++) {
+                points.push([0, points[a][0], points[a][1]]);
+            }
+
+            for (var a = 0; a < MAX; a++) {
+                points.push([points[a][1], 0, points[a][0]]);
+            }
+
+            rus();
+        };
+
+        function calculateAge(event) {
+            event.preventDefault();
+
+            var dob = document.getElementById("dob").value;
+            var dobDate = new Date(dob);
+            var today = new Date();
+
+            var age = today.getFullYear() - dobDate.getFullYear();
+            var monthDiff = today.getMonth() - dobDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+                age--;
+            }
+
+            document.getElementById("result").innerHTML = "Your age is: " + age;
+        }
+
+        function rus() {
+            ctx.globalCompositeOperation = "source-over";
+            ctx.fillStyle = "rgba(0,0,0,0.03)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = "lighter";
+
+            var tim = count / 5;
+
+            for (var e = 0; e < 3; e++) {
+                tim *= 1.7;
+                var s = 1 - e / 3;
+                a = tim / 59;
+                var yp = Math.cos(a);
+                var yp2 = Math.sin(a);
+                a = tim / 23;
+                var xp = Math.cos(a);
+                var xp2 = Math.sin(a);
+                var p2 = [];
+
+                for (var a = 0; a < points.length; a++) {
+                    var x = points[a][0];
+                    var y = points[a][1];
+                    var z = points[a][2];
+
+                    var y1 = y * yp + z * yp2;
+                    var z1 = y * yp2 - z * yp;
+                    var x1 = x * xp + z1 * xp2;
+
+                    z = x * xp2 - z1 * xp;
+                    z1 = Math.pow(2, z * s);
+                    x = x1 * z1;
+                    y = y1 * z1;
+                    p2.push([x, y, z]);
+                }
+
+                s *= 120;
+                for (var d = 0; d < 3; d++) {
+                    for (var a = 0; a < MAX; a++) {
+                        const b = p2[d * MAX + a];
+                        const c = p2[((a + 1) % MAX) + d * MAX];
+                        ctx.beginPath();
+                        ctx.strokeStyle = "hsla( " + (((a / MAX) * 360) | 0) + ",70%,60%,0.15)";
+                        ctx.lineWidth = Math.pow(6, b[2]);
+                        ctx.lineTo(b[0] * s + 200, b[1] * s + 200);
+                        ctx.lineTo(c[0] * s + 200, c[1] * s + 200);
+                        ctx.stroke();
+                    }
+                }
+            }
+            count++;
+            requestAnimationFrame(rus);
+        }
+    </script>
+</body>
+
+</html>
